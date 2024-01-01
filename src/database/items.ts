@@ -6,6 +6,6 @@ const ItemSchema = new mongoose.Schema({
     time: {type: Date}
 })
 
-export const ItemModel = mongoose.model('Items', ItemSchema);
+export const ItemModel = mongoose.model('VotingApp', ItemSchema, "VotingItems");
 
 export const getVotingItems = () => ItemModel.find();

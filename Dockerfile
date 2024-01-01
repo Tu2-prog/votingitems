@@ -10,4 +10,7 @@ COPY . .
 
 EXPOSE 8080
 
+ARG MONGO_URL
+ENV MONGO_URL=${MONGO_URL}
+
 CMD [ "npm", "start" ]
