@@ -21,7 +21,7 @@ export const create = async(req: express.Request, res: express.Response) => {
         const mail = createVotingItem({
             title,
             location,
-
+            no_votes: 0
         });
         return res.status(200).json(mail).end();
     }
