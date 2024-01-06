@@ -1,5 +1,5 @@
 import express from "express";
-import { getVotingItems, createVotingItem, getVotingItemById } from "../database/items";
+import { getVotingItems, createVotingItem, getVotingItemById, deleteItemById } from "../database/items";
 
 export const getItems = async(req: express.Request, res: express.Response) => {
     try{
@@ -41,6 +41,19 @@ export const updateItem = async (req: express.Request, res: express.Response) =>
       await item.save();
 
       return res.status(200).json(item).end();
+    } catch (error) {
+      console.log(error);
+      return res.sendStatus(400);
+    }
+}
+
+export const deleteItem = async (req: express.Request, res: express.Response) => {
+    try {
+      const { id } = req.params;
+  
+      const deletedItem = await deleteItemById(id);
+  
+      return res.json(deletedItem);
     } catch (error) {
       console.log(error);
       return res.sendStatus(400);
